@@ -3,5 +3,50 @@ layout: layout.liquid
 title: 11ty Boilerplate
 ---
 
-<h1>Yet Another 11ty <strong>Boilerplate</strong></h1>
-<img alt="pine" src="/images/pine.png" width="50" />
+<h1>Lab 7.5 <strong>ALPINE JS</strong></h1>
+
+<!-- Container for the first product thumbnail -->
+<div id="thumbnail1" class="thumbnail-container"></div>
+<button onclick="toggleDescription('product1')" data-product="product1">Show Description</button>
+<p id="description1" class="description" style="display: none;"></p>
+
+<!-- Container for the second product thumbnail -->
+<div id="thumbnail2" class="thumbnail-container"></div>
+<button onclick="toggleDescription('product2')" data-product="product2">Show Description</button>
+<p id="description2" class="description" style="display: none;"></p>
+
+<script>
+    function displayHTML(elementId, string) {
+        const mainImage = document.getElementById(elementId);
+        mainImage.innerHTML = `<img alt="test" src="${string}"/>`;
+    }
+
+    // First API call
+    fetch('https://dummyjson.com/products/6')
+        .then(res => res.json())
+        .then(json => displayHTML('thumbnail1', json.thumbnail))
+        .catch(error => console.error('Error fetching first product data:', error));
+
+    // Second API call
+    fetch('https://dummyjson.com/products/7')
+        .then(res => res.json())
+        .then(json => displayHTML('thumbnail2', json.thumbnail))
+        .catch(error => console.error('Error fetching second product data:', error));
+
+    function toggleDescription(product) {
+        const descriptionElement = document.getElementById(`description${product.slice(-1)}`);
+        const button = document.querySelector(`button[data-product="${product}"]`);
+
+        if (descriptionElement.style.display === 'none') {
+            descriptionElement.style.display = 'block';
+            button.textContent = 'Hide Description';
+
+            // Replace the following description with the actual description of the product
+            const description = "Description of Product " + product.slice(-1) + ": Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+            descriptionElement.textContent = description;
+        } else {
+            descriptionElement.style.display = 'none';
+            button.textContent = 'Show Description';
+        }
+    }
+</script>
