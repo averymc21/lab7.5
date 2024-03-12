@@ -3,17 +3,24 @@ layout: layout.liquid
 title: 11ty Boilerplate
 ---
 
-<h1>Lab 7.5 <strong>ALPINE JS</strong></h1>
+<h1>Laptop Products For Sale</h1>
 
 <!-- Container for the first product thumbnail -->
 <div id="thumbnail1" class="thumbnail-container"></div>
-<button onclick="toggleDescription('product1')" data-product="product1">Show Description</button>
-<p id="description1" class="description" style="display: none;"></p>
+<div class="button-container">
+    <button onclick="toggleDescription('product1')" data-product="product1">Show Description</button>
+    <p id="description1" class="description" style="display: none;"></p>
+</div>
 
 <!-- Container for the second product thumbnail -->
-<div id="thumbnail2" class="thumbnail-container"></div>
-<button onclick="toggleDescription('product2')" data-product="product2">Show Description</button>
-<p id="description2" class="description" style="display: none;"></p>
+<div id="thumbnail2" class="thumbnail-container">
+</div>
+<div class="button-container">
+    <button onclick="toggleDescription('product2')" data-product="product2">Show Description</button>
+    <p id="description2" class="description" style="display: none;"></p>
+</div>
+
+
 
 <script>
     function displayHTML(elementId, string) {
@@ -41,8 +48,12 @@ title: 11ty Boilerplate
             descriptionElement.style.display = 'block';
             button.textContent = 'Hide Description';
 
-            // Replace the following description with the actual description of the product
-            const description = "Description of Product " + product.slice(-1) + ": Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+            let description;
+            if (product === 'product1') {
+                description = "Description of Product 1: Mac Book Air: $500.";
+            } else if (product === 'product2') {
+                description = "Description of Product 2: HP Pavilion: $600.";
+            }
             descriptionElement.textContent = description;
         } else {
             descriptionElement.style.display = 'none';

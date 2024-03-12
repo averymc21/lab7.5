@@ -13,36 +13,28 @@ h2 {
 }
 
 button {
+    height: 50px;
+    width: 500px;
+    border-radius: 5px;
     background-color: var(--van-dyke);
     color: var(--cambridge-blue);
     text-align: center;
 }
 
-.container {
-    display: flex;
-    justify-content: center;
-}
 
 .thumbnail-container {
     height: 500px;
-    margin-right: 75px;
-    margin-bottom: 100px;
-    margin-left: 75px;
+    margin: 0 auto 75px; /* Center the container horizontally */
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    justify-content: center; /* Center both horizontally */
+    align-items: center; /* Center vertically */
+    flex-direction: column; /* Change to column */
     text-align: center;
 }
 
-.thumbnail-container img {
-    width: 400x;
-    height: 400px;
-    display: block;
-}
 
 .thumbnail-container:hover {
     transform: translateY(-5px);
@@ -56,6 +48,15 @@ button {
     --hunter-green: #4b644aff;
     --van-dyke: #49393bff;
     --bistre: #341c1cff;
+}
+
+.button-container {
+    background-color: var(--cambridge-blue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px; /* Adjust this as needed */
+    margin-bottom: 50px;
 }
 
 .thumbnail-container:nth-child(odd) {
